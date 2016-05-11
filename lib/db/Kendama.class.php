@@ -16,7 +16,7 @@ class db_Kendama {
 		return db_Kendama::get("id = " . _hx_string_rec($id, ""));
 	}
 	static function getByTerm($from, $to) {
-		return db_Kendama::get("date between " . _hx_string_or_null($from) . " and " . _hx_string_or_null($to));
+		return db_Kendama::get("record_date between \"" . _hx_string_or_null($from) . "\" and \"" . _hx_string_or_null($to) . "\"");
 	}
 	static function insertData($map) {
 		$connection = jp_saken_php_DB::getConnection("kendama");
@@ -44,6 +44,14 @@ class db_Kendama {
 			$setList->push(_hx_string_or_null($key) . " = \"" . _hx_string_or_null($map->get($key)) . "\"");
 		}
 		$request = "update " . "discs" . " set " . _hx_string_or_null($setList->join(",")) . " where id = " . _hx_string_rec($id, "");
+		$connection->request($request);
+	}
+	static function deleteData($id) {
+		if($id === null) {
+			return;
+		}
+		$connection = jp_saken_php_DB::getConnection("kendama");
+		$request = "delete from " . "discs" . " where id = " . _hx_string_or_null($id);
 		$connection->request($request);
 	}
 	static function get($where = null) {

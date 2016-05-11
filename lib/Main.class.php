@@ -16,6 +16,9 @@ class Main {
 			case "update":{
 				Main::updateData($params);
 			}break;
+			case "delete":{
+				db_Kendama::deleteData($params->get("id"));
+			}break;
 			default:{
 				Main::selectData($params);
 			}break;
@@ -29,7 +32,7 @@ class Main {
 	static function updateData($params) {
 		$id = Std::parseInt($params->get("id"));
 		if($id === null) {
-			haxe_Log::trace("IDが必要です。", _hx_anonymous(array("fileName" => "Main.hx", "lineNumber" => 63, "className" => "Main", "methodName" => "updateData")));
+			haxe_Log::trace("IDが必要です。", _hx_anonymous(array("fileName" => "Main.hx", "lineNumber" => 64, "className" => "Main", "methodName" => "updateData")));
 			return;
 		}
 		$params->remove("mode");

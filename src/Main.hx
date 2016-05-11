@@ -35,6 +35,7 @@ class Main {
 			
 			case 'insert' : insertData(params);
 			case 'update' : updateData(params);
+			case 'delete' : Kendama.deleteData(params['id']);
 			default       : selectData(params);
 			
 		}

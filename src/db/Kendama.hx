@@ -45,7 +45,7 @@ class Kendama {
 		========================================================================== */
 		public static function getByTerm(from:String,to:String):String {
 
-			return get('date between ' + from + ' and ' + to);
+			return get('record_date between "' + from + '" and "' + to + '"');
 
 		}
 		
@@ -87,6 +87,20 @@ class Kendama {
 			}
 			
 			var request:String = 'update ' + TABLE_NAME + ' set ' + setList.join(',') + ' where id = ' + id;
+			connection.request(request);
+
+		}
+		
+		/* =======================================================================
+		Public - Delete Data
+		========================================================================== */
+		public static function deleteData(id:String):Void {
+			
+			if (id == null) return;
+			
+			var connection:Connection = DB.getConnection(DB_NAME);
+			var request:String = 'delete from ' + TABLE_NAME + ' where id = ' + id;
+			
 			connection.request(request);
 
 		}

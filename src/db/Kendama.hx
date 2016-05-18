@@ -130,7 +130,7 @@ class Kendama {
 		if (keyword == null) return '';
 		
 		var head:String = hasWhere ? ' and ' : ' where ';
-		return head + 'concat_ws(char(0),name,team,clients,works,keywords,note) like "%' + keyword + '%"';
+		return head + 'concat_ws(char(0),name,team,clients,works,note) like "%' + keyword + '%"';
 		
 	}
 	

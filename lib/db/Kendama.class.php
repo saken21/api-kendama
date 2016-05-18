@@ -74,7 +74,7 @@ class db_Kendama {
 		} else {
 			$head = " where ";
 		}
-		return _hx_string_or_null($head) . "concat_ws(char(0),name,team,clients,works,keywords,note) like \"%" . _hx_string_or_null($keyword) . "%\"";
+		return _hx_string_or_null($head) . "concat_ws(char(0),name,team,clients,works,note) like \"%" . _hx_string_or_null($keyword) . "%\"";
 	}
 	static function getAddedUpdatetime($map) {
 		{
